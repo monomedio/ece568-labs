@@ -10,3 +10,20 @@ Encode the secret into base 32, format the URI, and display the QR code.
 validateQRcode.c:
 Compute HMAC following the definition, using (Unix-time / 30) as the message, 
 and follow the code provided in RFC6238 to truncate the computed HMAC to 6 characters.
+
+
+Part 2
+
+getAuthenticatorStatus():
+Send a GET request to the server, parse the JSON response, if status is 'active' and at least one
+of the authentication methods is 'enrolled', return 'active'. Else, return ''.
+
+sendStepUp():
+Populate the 'data' dictionary, send a POST request to the server to initiate the authenitcation request, 
+parse the JSON response, save the user verification ID in the class variable 'self.stepupId' so it can
+be used to send periodic GET requests in the next step to check if the user has authenticated yet.
+
+getStepupStatus():
+Is periodically called to check if the user has authenicated yet. Send a GET request to the server,
+parse the JSON response. If the 'status' is 'success', return this. If the 'status' is 'pending', 
+return this. Else, return 'declined'.
