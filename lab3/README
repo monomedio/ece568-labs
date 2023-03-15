@@ -1,0 +1,6 @@
+#Ching Hui, 1005219504, sam.hui@mail.utoronto.ca
+#Spencer Ball, 1004762599, spencer.ball@mail.utoronto.ca
+
+Part 1 Explanation:
+
+Searching the attack code will render a login interface containing two input fields, username and password, and a submit button. After submitting, these two fields will be sent to the catcher servlet
