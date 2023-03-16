@@ -23,5 +23,6 @@ The attack script is passed as a default value for input2. Then, when a user ent
 Part 3 Explanation:
 An HTML image tag is included in the message, however the URL to the image is modified with a transfer parameter so that whenever someone opens that specific message, $5000 will be transferred from their account. This works because the image element will launch a request to the URL when rendering.
 
+
 Part 4 Explanation:
 The message field is exploitable. The webgoat servlet expects a transfer=CONFIRMED request after a money transfer is requested to confirm the transfer. To do that, we change the src attribute of the iframe to a URL with the transfer parameter set to CONFIRMED.
