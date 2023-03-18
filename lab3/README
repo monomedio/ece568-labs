@@ -26,3 +26,16 @@ An HTML image tag is included in the message, however the URL to the image is mo
 
 Part 4 Explanation:
 The message field is exploitable. The webgoat servlet expects a transfer=CONFIRMED request after a money transfer is requested to confirm the transfer. To do that, we change the src attribute of the iframe to a URL with the transfer parameter set to CONFIRMED.
+
+
+Part 6 Explanation:
+We used a simple compound statement to make the query return all entries.
+
+Part 7 Explanation:
+(i) By adding a semi-colon after the first entry, a second statement can be made for updating the salary field.
+(ii) Following the format provided by WebGoat, the trigger was easily set up to replace all new emails with the desired email.
+
+Part 8 Explanation:
+101; SELECT * FROM credit WHERE cc_number = 1234123412341234 and pin = 3318
+We used the above line with pin < 9999, pin < 5000, ... until we got invalid account number.
+We then tried pin > 3000, pin > 3100 ... until we got invalid account number and slowly narrowed the options.
