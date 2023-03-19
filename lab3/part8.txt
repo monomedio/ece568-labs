@@ -1,4 +1,1 @@
-101; SELECT * FROM credit WHERE cc_number = 1234123412341234 and pin = 3318
-
-I used the above line with pin < 9999, pin < 5000, ... until I got invalid account number.
-I then tried pin > 3000, pin > 3100 ... until I got invalid account number and slowly narrowed the options.
+3318
