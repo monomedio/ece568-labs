@@ -28,6 +28,10 @@ Part 4 Explanation:
 The message field is exploitable. The webgoat servlet expects a transfer=CONFIRMED request after a money transfer is requested to confirm the transfer. To do that, we change the src attribute of the iframe to a URL with the transfer parameter set to CONFIRMED.
 
 
+Part 5 Explanation:
+The message field is exploitable. The form that is returned by a transfer=main request has a hidden input field with name=token. We use JavaScript to extract that token and include it as a parameter in a second request to transfer an arbitrary amount of money from anyone that opens the malicious email.
+
+
 Part 6 Explanation:
 We used a simple compound statement to make the query return all entries.
 
