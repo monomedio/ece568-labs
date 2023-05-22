@@ -1,0 +1,23 @@
+# NO SPOOF
+python2 dnsproxy_starter.py --port 8013 --dns_port 8011
+
+# SPOOF
+python2 dnsproxy_starter.py --port 8013 --dns_port 8011 --spoof_response
+
+# DIG BIND
+dig @127.0.0.1 -p 8011
+
+# DIG PROXY
+dig @127.0.0.1 -p 8013
+
+# PART 4
+python2 part4_starter.py --ip 127.0.0.1 --port 8011 --query_port 8010 --dns_port 8011
+
+# BIND QUERYLOG
+./bin/rndc -c etc/rndc.conf querylog
+
+# BIND DUMP CACHE
+./bin/rndc -c etc/rndc.conf dumpdb -cache && less named_dump.db
+
+# FLUSH CACHE
+bin/rndc -c etc/rndc.conf flush

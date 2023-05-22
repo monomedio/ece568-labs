@@ -1,0 +1,21 @@
+#Ching Hui, 1005219504, sam.hui@mail.utoronto.ca
+
+Part 1 Explanation:
+    "dig utoronto.ca" returns an A record that maps utoronto.ca to its IPv4 address. 
+    The name servers for utoronto.ca are included in the AUTHORITY section of the same response.
+    "dig utoronto.ca mx" returns an A record that maps utoronto.ca to its mail server, specifically a mail protection service.
+    "dig utoronto-ca.mail.protection.outlook.com" returns two A records that maps the mail server to two IPv4 addresses.
+
+Part 2 Explanation:
+    I chose port 8013 for the proxy server to listen for dig requests on. 
+    "dig @127.0.0.1 -p 8013 utoronto.ca" sends a dig request via UDP to the proxy server, which then forwards it to the BIND server. 
+    Similarly the proxy receives a DNS response from BIND and forwards that back to dig. 
+
+Part 3 Explanation:
+    I use scapy to modify the DNSRR entries of the DNS response, specifically modifying the rdata field of the record in ANSWER to 1.2.3.4
+    I then modify the name server records in the ns array of the DNS response, changing their rdata fields to ns.dnslabattacker.net.
+
+Part 4 Explanation:
+    The script firsts sends a DNS query for example.com to BIND, the response of which is modified to contain the malicious NS record, and the result is used as a template for the randomized attack packets.
+    Then, the script sends a DNS query for a random subdomain of example.com, and immediately after starts spamming the BIND server with lookup responses for the subdomain each with different transaction IDs.
+    If successful, the message received by the script will contain one NS record whose rdata field is ns.dnslabattacker.net. Otherwise, repeatedly query for random subdomains and spam with responses until successful.
